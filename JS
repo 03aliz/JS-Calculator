@@ -1,0 +1,28 @@
+$(document).ready(function() {
+  var input = $("#inputBox");
+
+  $(".myButton").on("click", function() { // select buttons
+    var buttonVal = $(this).html();
+    if (buttonVal == 'x') {
+      buttonVal = '*';
+    } // changes 'x' into operator
+
+    input.val(input.val() + buttonVal); // appends value of button to inputBox, html is used to get the html value of button. myButton is the object that owns "this".
+
+  });
+
+  $("#allClear").on("click", function() {
+    input.val(" ");
+  });
+
+  $("#clear").on("click", function() {
+    input.val(function(index, value) {
+      return value.substring(0, value.length - 1) // deletes characters
+    });
+  });
+
+  $("#equal").on("click", function() {
+    input.val(eval(input.val()));
+  });
+
+});
